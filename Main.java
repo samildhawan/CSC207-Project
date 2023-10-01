@@ -1,17 +1,8 @@
 import okhttp3.*;
-import okio.BufferedSink;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import java.io.IOException;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.nio.charset.StandardCharsets;
 
 public class Main {
 
+    // Example of field to send.
     /*
     curl https://api.openai.com/v1/chat/completions \
   -H "Content-Type: application/json" \
