@@ -5,6 +5,7 @@ Project for CSC207 Survivors
 
 A text-based adventure game inspired by Dungeons & Dragons,
 where the player can decide to take actions with certain percent of likelihood
+with randomly generated names and events using APIs like ChatGPT
 
 - Link to the documentation for an API: 
 
