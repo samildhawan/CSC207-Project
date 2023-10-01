@@ -10,6 +10,8 @@ https://platform.openai.com/docs
 
 - Screenshot of using a tool to try out the API:
 
+![screenshot of using a tool](Hoppscotch.png)
+
 - Example output of running Java code:
 
 {
