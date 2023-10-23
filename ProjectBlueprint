@@ -36,7 +36,6 @@ Inventory
 Item (abstract class)
 -	String name
 -	String lore
--	String function
 - child classes: weapon, spell, etc.
 
 WorldMap
