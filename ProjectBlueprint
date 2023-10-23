@@ -43,7 +43,8 @@ WorldMap
 - List<Location> locations
 
 Location
--	String prompt
+- String name
+-	String type
 -	List<Character> characters 
 - List<Item> items
 
