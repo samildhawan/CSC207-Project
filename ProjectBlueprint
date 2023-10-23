@@ -44,6 +44,7 @@ Worldmap
 Location
 -	String prompt
 -	List<Character> characters 
+- List<Item> items
 
 Character
 - String name
