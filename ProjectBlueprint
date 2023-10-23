@@ -39,7 +39,7 @@ Item (abstract class)
 -	String function
 - child classes: weapon, spell, etc.
 
-Worldmap
+WorldMap
 - List<Location> locations
 
 Location
