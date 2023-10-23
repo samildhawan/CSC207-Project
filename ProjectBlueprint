@@ -1,0 +1,52 @@
+Domain:
+A text-based adventure game inspired by Dungeons & Dragons, where the player can decide to take actions with a certain percent of likelihood with randomly generated names and events using APIs like ChatGPT.
+
+Software Specification:
+•	Actions for the player
+•	Player can choose classes to get initial starting stats
+•	Luck-based simulation for actions/choices the player makes
+•	Encounters for monsters to fight, which you gain experience from
+•	Inventory
+•	Save your game and load your progress
+
+User Stories: 
+[statements of interactions between the user and the system]
+[see additional instructions on Quercus]
+[aim for at least one user story per group member + 1 extra; in the table below, each group member must be assigned to one user story + mark one user story as being a team user story — this one should be the one that is most central to the basic functionality of your system. That is, the one you would probably want to implement first.]
+1.	Katharine starts up a new game on the program. The game prompts her to type in her name and to choose which class she wants to be a part of.
+2.	A new game starts with a level 1 player named Katharine who is part of the warrior class. She starts out with an empty inventory and the initial stats of a warrior. 
+3.	Katharine gets a story prompt and action options. She decides to do an action. Based on her stats and luck, she gets a new text prompt describing the result. [team story]
+4.	Player Katharine just killed a monster. She gained enough experience points to level up from level 1 to level 2. She was awarded with a skill point that can be added to increase the level of her skills.
+5.	While exploring, Katharine stumbles upon a treasure chest. She decides to attempt to open it. The game simulates the action, and there is a chance that the chest contains valuable loot or poses a trap. Katharine takes her chances and tries to open the chest, eagerly awaiting the outcome.
+
+Proposed Entities for the Domain:
+
+Player
+-	String name
+-	Map<String, int> stats
+-	int level
+
+Inventory
+-	Map<String, int> items
+-	int maximum
+-	boolean full
+
+Item
+-	String name
+-	String lore
+-	String function
+
+Monster
+-	String name
+-	Map<String, int> stats
+-	int level
+
+Treasure Chest
+-	String name
+-	String description
+-	boolean trapped
+-	Map<String, int> loot (could be replaced by an Inventory item)
+
+Event
+-	String prompt
+-	Map<String, Event> actions
