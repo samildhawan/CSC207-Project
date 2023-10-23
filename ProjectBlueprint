@@ -26,6 +26,7 @@ Player
 -	Map<String, int> stats
 -	int level
 - String backstory
+- WorldStory checkpoints
 
 Inventory
 -	Map<String, int> items
