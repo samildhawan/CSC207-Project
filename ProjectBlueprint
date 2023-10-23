@@ -25,28 +25,26 @@ Player
 -	String name
 -	Map<String, int> stats
 -	int level
+- String backstory
 
 Inventory
 -	Map<String, int> items
 -	int maximum
 -	boolean full
 
-Item
+Item (abstract class)
 -	String name
 -	String lore
 -	String function
+- child classes: weapon, spell, etc.
 
-Monster
--	String name
--	Map<String, int> stats
--	int level
+Worldmap
+- List<Location> locations
 
-Treasure Chest
--	String name
--	String description
--	boolean trapped
--	Map<String, int> loot (could be replaced by an Inventory item)
-
-Event
+Location
 -	String prompt
--	Map<String, Event> actions
+-	List<Character> characters 
+
+Character
+- String name
+- String status
