@@ -49,3 +49,9 @@ Location
 Character
 - String name
 - String status
+
+Milestone
+- String name
+
+WorldStory
+- List<Milestones> events
