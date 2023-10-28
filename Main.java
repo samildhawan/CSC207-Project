@@ -1,3 +1,5 @@
+import com.theokanning.openai.completion.CompletionRequest;
+import com.theokanning.openai.service.OpenAiService;
 import okhttp3.*;
 
 public class Main {
@@ -23,31 +25,12 @@ public class Main {
     }
 
     public static void main(String[] args) {
-
-        OkHttpClient client = new OkHttpClient().newBuilder()
+        OpenAiService service = new OpenAiService(getApiToken());
+        CompletionRequest completionRequest = CompletionRequest.builder()
+                .prompt("Give me a D&D monster and its stats and abilities in full")
+                .model("davinci-002")
+                .echo(true)
                 .build();
-
-        String prompt = "Translate 'Hello, World!' into french";
-
-        String jsonInput =
-                "{\n" +
-                        "     \"model\": \"gpt-3.5-turbo\",\n" +
-                        "     \"messages\": [{\"role\": \"user\", \"content\": \"" + prompt + "\"}],\n" +
-                        "     \"temperature\": 0.7\n" +
-                        "   }";
-
-        RequestBody requestBody = RequestBody.create(MediaType.get("application/json; charset=utf-8"), jsonInput);
-
-        Request request = new Request.Builder()
-                .url(String.format(API_URL))
-                .addHeader("Authorization", "Bearer " + API_TOKEN)
-                .addHeader("Content-Type", "application/json")
-                .post(requestBody).build();
-        try {
-            Response response = client.newCall(request).execute();
-            System.out.println(response.body().string());
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        service.createCompletion(completionRequest).getChoices().forEach(System.out::println);
     }
 }
