@@ -1,5 +1,6 @@
 package src.data_access;
 
+import com.theokanning.openai.completion.chat.ChatCompletionChoice;
 import com.theokanning.openai.completion.chat.ChatCompletionRequest;
 import com.theokanning.openai.completion.chat.ChatMessage;
 import com.theokanning.openai.completion.chat.ChatMessageRole;
@@ -23,19 +24,23 @@ public class APIAccessObject {
     }
 
 
-
-    public void runChatGPT(String systemPrompt, String userPrompt) {
+    public List<ChatCompletionChoice> runChatGPT(String systemPrompt, String userPrompt) {
+        // Create a list of the System and Chat messages
         final List<ChatMessage> messages = new ArrayList<>();
         final ChatMessage systemMessage = new ChatMessage(ChatMessageRole.SYSTEM.value(), systemPrompt);
         final ChatMessage requestMessage = new ChatMessage(ChatMessageRole.USER.value(), userPrompt);
         messages.add(systemMessage);
         messages.add(requestMessage);
+
+        // Create the chat request
         ChatCompletionRequest chatCompletionRequest = ChatCompletionRequest
                 .builder()
                 .model("gpt-3.5-turbo")
                 .messages(messages)
                 .build();
 
-        service.createChatCompletion(chatCompletionRequest).getChoices().forEach(System.out::println);
+        // Return all the ChatCompletionChoices
+        // A ChatCompletionChoice includes the message, the finishReason and the index
+        return service.createChatCompletion(chatCompletionRequest).getChoices();
     }
 }

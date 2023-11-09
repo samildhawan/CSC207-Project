@@ -4,7 +4,6 @@ import src.data_access.APIAccessObject;
 
 public class Main {
 
-
     public static void main(String[] args) {
         APIAccessObject api = new APIAccessObject();
 
@@ -23,6 +22,7 @@ public class Main {
 
                 User messages written in square brackets are commands.""";
 
-        api.runChatGPT(systemPrompt, "[START GAME]");
+        // Print out results of the response
+        System.out.println(api.runChatGPT(systemPrompt, "[START GAME]"));
     }
 }
