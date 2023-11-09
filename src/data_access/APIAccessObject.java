@@ -13,6 +13,8 @@ public class APIAccessObject {
 
     private final OpenAiService service;
 
+    final List<ChatMessage> messages;
+
     private static final String API_TOKEN = System.getenv("API_TOKEN");
 
     public static String getApiToken() {
@@ -21,17 +23,33 @@ public class APIAccessObject {
 
     public APIAccessObject() {
         service = new OpenAiService(getApiToken());
+        messages = new ArrayList<>();
     }
 
+    public void clearMessages() {
+        messages.clear();
+    }
 
-    public List<ChatCompletionChoice> runChatGPT(String systemPrompt, String userPrompt) {
-        // Create a list of the System and Chat messages
-        final List<ChatMessage> messages = new ArrayList<>();
+    public void addSystemPrompt(String systemPrompt) {
         final ChatMessage systemMessage = new ChatMessage(ChatMessageRole.SYSTEM.value(), systemPrompt);
-        final ChatMessage requestMessage = new ChatMessage(ChatMessageRole.USER.value(), userPrompt);
         messages.add(systemMessage);
-        messages.add(requestMessage);
+    }
 
+    public void addUserPrompt(String userPrompt) {
+        final ChatMessage requestMessage = new ChatMessage(ChatMessageRole.USER.value(), userPrompt);
+        messages.add(requestMessage);
+    }
+
+    public void addHistory(String[][] history) {
+        for (String[] strings : history) {
+            ChatMessage requestMessage = new ChatMessage(ChatMessageRole.USER.value(), strings[0]);
+            ChatMessage responseMessage = new ChatMessage(ChatMessageRole.ASSISTANT.value(), strings[1]);
+            messages.add(requestMessage);
+            messages.add(responseMessage);
+        }
+    }
+
+    public List<ChatCompletionChoice> runChatGPT() {
         // Create the chat request
         ChatCompletionRequest chatCompletionRequest = ChatCompletionRequest
                 .builder()
