@@ -29,7 +29,10 @@ public class GameView extends JPanel implements ActionListener, PropertyChangeLi
         gameViewModel.addPropertyChangeListener(this);
 
         historyField.setLineWrap(true);
+        historyField.setEditable(false);
         promptInputField.setLineWrap(true);
+
+        JScrollPane scrollPane = new JScrollPane(historyField);
 
         // Create the layout
         JLabel title = new JLabel("GAME SCREEN");
@@ -91,7 +94,7 @@ public class GameView extends JPanel implements ActionListener, PropertyChangeLi
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         this.add(title);
-        this.add(historyField);
+        this.add(scrollPane);
         this.add(promptInputField);
         this.add(buttons);
     }
