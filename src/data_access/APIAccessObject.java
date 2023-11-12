@@ -1,15 +1,14 @@
 package src.data_access;
 
-import com.theokanning.openai.completion.chat.ChatCompletionChoice;
-import com.theokanning.openai.completion.chat.ChatCompletionRequest;
-import com.theokanning.openai.completion.chat.ChatMessage;
-import com.theokanning.openai.completion.chat.ChatMessageRole;
+import com.theokanning.openai.completion.chat.*;
 import com.theokanning.openai.service.OpenAiService;
+import src.use_case.game.GameDataAccessInterface;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
-public class APIAccessObject {
+public class APIAccessObject implements GameDataAccessInterface {
 
     private final OpenAiService service;
 
@@ -22,7 +21,7 @@ public class APIAccessObject {
     }
 
     public APIAccessObject() {
-        service = new OpenAiService(getApiToken());
+        service = new OpenAiService(getApiToken(), Duration.ZERO);
         messages = new ArrayList<>();
     }
 
@@ -40,7 +39,7 @@ public class APIAccessObject {
         messages.add(requestMessage);
     }
 
-    public void addHistory(String[][] history) {
+    public void addHistory(List<String[]> history) {
         for (String[] strings : history) {
             ChatMessage requestMessage = new ChatMessage(ChatMessageRole.USER.value(), strings[0]);
             ChatMessage responseMessage = new ChatMessage(ChatMessageRole.ASSISTANT.value(), strings[1]);
@@ -59,6 +58,10 @@ public class APIAccessObject {
 
         // Return all the ChatCompletionChoices
         // A ChatCompletionChoice includes the message, the finishReason and the index
-        return service.createChatCompletion(chatCompletionRequest).getChoices();
+
+        ChatCompletionResult result = service.createChatCompletion(chatCompletionRequest);
+        System.out.println("USAGE " + result.getUsage().getTotalTokens());
+
+        return result.getChoices();
     }
 }
