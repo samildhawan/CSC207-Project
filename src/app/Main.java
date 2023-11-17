@@ -1,5 +1,6 @@
 package src.app;
 
+import com.formdev.flatlaf.FlatLightLaf;
 import com.theokanning.openai.completion.chat.ChatCompletionChoice;
 import src.data_access.APIAccessObject;
 import src.interface_adapter.ViewManagerModel;
@@ -63,6 +64,8 @@ public class Main {
     */
 
     public static void main(String[] args) {
+        FlatLightLaf.setup();
+
         JFrame application = new JFrame("Game");
         application.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
