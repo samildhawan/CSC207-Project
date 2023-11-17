@@ -17,7 +17,7 @@ public class GamePresenter implements GameOutputBoundary {
     @Override
     public void prepareSuccessView(GameOutputData data) {
         GameState currentState = gameViewModel.getState();
-        currentState.setHistory(currentState.getHistory() + "\n" + data.getMessage());
+        currentState.setHistory(currentState.getHistory() + data.getMessage() + "\n");
         gameViewModel.firePropertyChanged();
     }
 
