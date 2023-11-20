@@ -31,7 +31,6 @@ public class GameInteractor implements GameInputBoundary {
 
             // Print out results of the response
             List<ChatCompletionChoice> choices = gameDataAccessObject.runChatGPT();
-            System.out.println(choices);
 
             GameOutputData gameOutputData = new GameOutputData(choices);
 
