@@ -5,6 +5,8 @@ import src.interface_adapter.game.GameState;
 import src.interface_adapter.game.GameViewModel;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import javax.swing.text.DefaultStyledDocument;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,8 +20,8 @@ public class GameView extends JPanel implements ActionListener, PropertyChangeLi
     private final GameViewModel gameViewModel;
     private final GameController gameController;
 
-    private final JTextArea promptInputField = new JTextArea(5, 15);
-    private final JTextArea historyField = new JTextArea(5, 15);
+    private final JTextArea promptInputField = new JTextArea("Enter your prompt", 2, 50);
+    private final JTextArea historyField = new JTextArea(10, 50);
 
     private final JButton submit;
 
@@ -28,16 +30,18 @@ public class GameView extends JPanel implements ActionListener, PropertyChangeLi
         this.gameViewModel = gameViewModel;
         gameViewModel.addPropertyChangeListener(this);
 
+        this.setBorder(new EmptyBorder(10, 10, 10, 10));
+
+        historyField.setWrapStyleWord(true);
         historyField.setLineWrap(true);
         historyField.setEditable(false);
         promptInputField.setLineWrap(true);
+        promptInputField.setWrapStyleWord(true);
+        promptInputField.putClientProperty( "JComponent.roundRect", true );
 
         JScrollPane scrollPane = new JScrollPane(historyField);
 
         // Create the layout
-        JLabel title = new JLabel("GAME SCREEN");
-        title.setAlignmentX(Component.CENTER_ALIGNMENT);
-
         JPanel buttons = new JPanel();
         submit = new JButton(GameViewModel.SUBMIT_BUTTON_LABEL);
         buttons.add(submit);
@@ -93,9 +97,8 @@ public class GameView extends JPanel implements ActionListener, PropertyChangeLi
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
-        this.add(title);
         this.add(scrollPane);
-        this.add(promptInputField);
+        this.add(promptInputField, BorderLayout.SOUTH);
         this.add(buttons);
     }
 
