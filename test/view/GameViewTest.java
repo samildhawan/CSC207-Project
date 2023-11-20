@@ -136,31 +136,22 @@ public class GameViewTest {
 
         // Hi is 72, 72
         try {
+            // Empty textbox
+            promptTextArea.setText("");
             promptTextArea.grabFocus();
-            TimeUnit.SECONDS.sleep(5);
-            Robot rob = new Robot();
-            rob.keyPress(KeyEvent.VK_META);
-            rob.keyPress(KeyEvent.VK_A);
-            rob.keyRelease(KeyEvent.VK_META);
-            rob.keyRelease(KeyEvent.VK_A);
-            TimeUnit.SECONDS.sleep(1);
-            rob.keyPress(KeyEvent.VK_DELETE);
-            TimeUnit.SECONDS.sleep(10);
-            rob.keyRelease(KeyEvent.VK_DELETE);
-            TimeUnit.SECONDS.sleep(1);
             System.out.println(promptTextArea.getText());
+
+            Robot rob = new Robot();
 
             rob.keyPress(KeyEvent.VK_H);
             TimeUnit.SECONDS.sleep(1);
             // For every button press, I should also check GameState to see if it updated too
             rob.keyRelease(KeyEvent.VK_H);
-            TimeUnit.SECONDS.sleep(1);
 
-            System.out.println(promptTextArea.getText());
             assert promptTextArea.getText().equals("h");
 
             rob.keyPress(KeyEvent.VK_I);
-            // For every button press, I should also check GameState to see if it updated too
+            TimeUnit.SECONDS.sleep(1);
             rob.keyRelease(KeyEvent.VK_I);
 
             assert promptTextArea.getText().equals("hi");
