@@ -26,7 +26,7 @@ A text-based adventure game inspired by Dungeons & Dragons, where the player can
 
 ## Plans
 
-See both the early [plan of the views](Early-views.png) and an early [plan for the UML](UML-daigram.png).
+See both the early [plan of the views](Early-views.png) and an early [plan for the UML](UML-diagram.png).
 
 ## Technical problems blocking progress
 
