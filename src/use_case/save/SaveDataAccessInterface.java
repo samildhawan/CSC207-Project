@@ -1,2 +1,5 @@
-package src.use_case.save;public interface SaveDataAccessInterface {
+package src.use_case.save;
+
+public interface SaveDataAccessInterface {
+
 }
