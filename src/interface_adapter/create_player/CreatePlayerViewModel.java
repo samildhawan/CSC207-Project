@@ -7,6 +7,7 @@ import java.beans.PropertyChangeSupport;
 
 public class CreatePlayerViewModel extends ViewModel {
 
+    public static final String SUBMIT_BUTTON_LABEL = "Confirm your choice";
     private CreatePlayerState state = new CreatePlayerState();
 
 
