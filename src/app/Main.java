@@ -3,9 +3,12 @@ package src.app;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.theokanning.openai.completion.chat.ChatCompletionChoice;
 import src.data_access.APIAccessObject;
+import src.entity.CreatePlayer;
 import src.interface_adapter.ViewManagerModel;
+import src.interface_adapter.create_player.CreatePlayerViewModel;
 import src.interface_adapter.game.GameViewModel;
 import src.view.GameView;
+import src.view.CreatePlayerView;
 import src.view.ViewManager;
 
 import javax.swing.*;
@@ -86,6 +89,13 @@ public class Main {
 
         viewManagerModel.setActiveView(gameView.viewName);
 
+        application.pack();
+        application.setVisible(true);
+
+        CreatePlayerViewModel createPlayerViewModel = new CreatePlayerViewModel();
+        CreatePlayerView createPlayerView = CreatePlayerUseCaseFactory.create(viewManagerModel, createPlayerViewModel, apiAccessObject);
+        views.add(createPlayerView, createPlayerView.viewName);
+        viewManagerModel.setActiveView(createPlayerView.viewName);
         application.pack();
         application.setVisible(true);
     }
