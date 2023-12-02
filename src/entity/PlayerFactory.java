@@ -2,6 +2,6 @@ package src.entity;
 
 public interface PlayerFactory {
 
-    // TODO: Fill this in
+    Player createPlayer(String name, String classType, String backstory);
 
 }

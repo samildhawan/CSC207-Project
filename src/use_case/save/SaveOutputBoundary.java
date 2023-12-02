@@ -4,4 +4,5 @@ public interface SaveOutputBoundary {
     void prepareSuccessView(SaveOutputData data);
 
     void prepareFailView(String error);
+
 }
