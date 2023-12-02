@@ -12,4 +12,5 @@ public class CreatePlayerOutputData {
     public String getMessage() {
         return choices.get(0).getMessage().getContent();
     }
+
 }

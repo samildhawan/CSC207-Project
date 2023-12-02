@@ -1,2 +1,5 @@
-package src.use_case.save;public class SaveInteractor {
+package src.use_case.save;
+
+public class SaveInteractor {
+
 }

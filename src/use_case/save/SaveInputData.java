@@ -1,2 +1,5 @@
-package src.use_case.save;public class SaveInputData {
+package src.use_case.save;
+
+public class SaveInputData {
+
 }

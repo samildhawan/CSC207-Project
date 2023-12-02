@@ -1,2 +1,5 @@
-package src.interface_adapter.save;public class SaveState {
+package src.interface_adapter.save;
+
+public class SaveState {
+
 }

@@ -1,2 +1,7 @@
-package src.use_case.create_world;public class CreateWorldOutputData {
+package src.use_case.create_world;
+
+import java.util.List;
+
+public class CreateWorldOutputData {
+
 }
