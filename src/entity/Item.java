@@ -9,7 +9,6 @@
  */
 
 package src.entity;
-
 public abstract class Item {
     /**
      * The Item class represents a generic item in the game world.
@@ -34,7 +33,6 @@ public abstract class Item {
     public String getName() {
         return name;
     }
-
 }
 
 /**
@@ -62,7 +60,6 @@ class Wearable extends Item {
     public String getBoost() {
         return boost;
     }
-
 }
 
 
