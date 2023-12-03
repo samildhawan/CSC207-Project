@@ -12,7 +12,7 @@ public class CreatePlayerViewModel extends ViewModel {
 
 
     public CreatePlayerViewModel() {
-        super("Create Player");
+        super("create player");
     }
 
     public void setState(CreatePlayerState state) {this.state = state;}
