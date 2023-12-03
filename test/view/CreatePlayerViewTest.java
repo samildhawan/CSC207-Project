@@ -14,6 +14,9 @@ import static org.junit.Assert.assertNotNull;
 public class CreatePlayerViewTest {
 
     public CreatePlayerView getCreatePlayerView(){
+        // Make view
+        // Check CreatePlayer is instantiated correctly
+        // Check that we cannot type text into history of CreatePlayer
         JFrame app = null;
         Window[] windows = Window.getWindows();
         for (Window window : windows) {
