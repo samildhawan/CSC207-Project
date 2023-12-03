@@ -4,16 +4,21 @@ import com.formdev.flatlaf.FlatLightLaf;
 import com.theokanning.openai.completion.chat.ChatCompletionChoice;
 import src.data_access.APIAccessObject;
 import src.entity.CreatePlayer;
+import src.entity.CreatePlayerFactory;
+import src.entity.Player;
+import src.entity.PlayerFactory;
 import src.interface_adapter.ViewManagerModel;
 import src.interface_adapter.create_player.CreatePlayerViewModel;
 import src.interface_adapter.game.GameViewModel;
 import src.view.GameView;
 import src.view.CreatePlayerView;
 import src.view.ViewManager;
+import src.data_access.FileDataAccessObject;
 
 import javax.swing.*;
 import javax.swing.text.View;
 import java.awt.*;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -66,7 +71,7 @@ public class Main {
     }
     */
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         FlatLightLaf.setup();
 
         JFrame application = new JFrame("Game");
@@ -98,5 +103,7 @@ public class Main {
         viewManagerModel.setActiveView(createPlayerView.viewName);
         application.pack();
         application.setVisible(true);
+
+        new FileDataAccessObject("./users.csv", (name, stats, xp, aClass, backstory) -> null);
     }
 }

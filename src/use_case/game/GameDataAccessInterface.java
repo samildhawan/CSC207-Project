@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface GameDataAccessInterface {
 
+    boolean existsByName(String identifier);
+
     void addSystemPrompt(String prompt);
 
     void addUserPrompt(String prompt);
