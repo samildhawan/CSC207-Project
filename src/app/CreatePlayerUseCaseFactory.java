@@ -23,4 +23,5 @@ public class CreatePlayerUseCaseFactory {
         CreatePlayerOutputBoundary createPlayerOutputBoundary = new CreatePlayerPresenter(viewManagerModel, createPlayerViewModel);
         CreatePlayerInputBoundary createPlayerInteractor = new CreatePlayerInteractor(createPlayerDataAccessInterface, createPlayerOutputBoundary);
         return new CreatePlayerController(createPlayerInteractor);
-}}
+    }
+}

@@ -11,6 +11,7 @@
 package src.view;
 
 import src.interface_adapter.title.TitleController;
+import src.interface_adapter.title.TitleState;
 import src.interface_adapter.title.TitleViewModel;
 
 import javax.swing.*;
@@ -22,13 +23,10 @@ import java.beans.PropertyChangeListener;
 
 public class TitleView extends JPanel implements ActionListener, PropertyChangeListener {
 
-    private final String viewName = "title";
-    private final TitleViewModel titleViewModel;
-    private final TitleController titleController;
+    public final String viewName = "title";
 
     private final JButton start;
     private final JButton createPlayer;
-    private final JButton createWorld;
 
     /**
      * Constructs a new TitleView with the specified TitleController and TitleViewModel
@@ -37,8 +35,6 @@ public class TitleView extends JPanel implements ActionListener, PropertyChangeL
      * @param titleViewModel       The view model for the title screen.
      */
     public TitleView(TitleController titleController, TitleViewModel titleViewModel) {
-        this.titleController = titleController;
-        this.titleViewModel = titleViewModel;
 
         titleViewModel.addPropertyChangeListener(this);
 
@@ -48,7 +44,35 @@ public class TitleView extends JPanel implements ActionListener, PropertyChangeL
         JPanel buttons = new JPanel();
         start = new JButton("START GAME");
         createPlayer = new JButton("CREATE A PLAYER");
-        createWorld = new JButton("CREATE A WORLD");
+
+        buttons.add(start);
+        buttons.add(createPlayer);
+
+        start.addActionListener(
+                new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        if (e.getSource().equals(start)) {
+                            titleController.execute("game");
+                        }
+                    }
+                }
+        );
+
+        createPlayer.addActionListener(
+                new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        if (e.getSource().equals(createPlayer)) {
+                            titleController.execute("create player");
+                        }
+                    }
+                }
+        );
+
+        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        this.add(title);
+        this.add(buttons);
     }
 
 
@@ -59,6 +83,10 @@ public class TitleView extends JPanel implements ActionListener, PropertyChangeL
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-
+        TitleState state = (TitleState) evt.getNewValue();
+        if(state.getFail()) {
+            JOptionPane.showMessageDialog(this, "Error");
+        }
+        state.setFail(false);
     }
 }
