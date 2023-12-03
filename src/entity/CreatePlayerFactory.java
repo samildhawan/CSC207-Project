@@ -11,8 +11,9 @@ import src.use_case.create_player.CreatePlayerOutputBoundary;
 import src.view.CreatePlayerView;
 
 public class CreatePlayerFactory implements PlayerFactory{
+
     @Override
-    public Player createPlayer(String name, String classType, String backstory) {
-        return new CreatePlayer(name, classType, backstory);
+    public Player create(String name, String stats, String xp, String aClass, String backstory) {
+        return null;
     }
 }
