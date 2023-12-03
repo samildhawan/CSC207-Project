@@ -15,6 +15,7 @@ import src.interface_adapter.title.TitleState;
 import src.interface_adapter.title.TitleViewModel;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -41,8 +42,10 @@ public class TitleView extends JPanel implements ActionListener, PropertyChangeL
         JLabel title = new JLabel("SCRIPT WRITER");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
+        this.setBorder(new EmptyBorder(50, 10, 10, 10));
+
         JPanel buttons = new JPanel();
-        start = new JButton("START GAME");
+        start = new JButton("    START GAME    ");
         createPlayer = new JButton("CREATE A PLAYER");
 
         buttons.add(start);
@@ -72,6 +75,9 @@ public class TitleView extends JPanel implements ActionListener, PropertyChangeL
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.add(title);
+        buttons.setAlignmentX(Component.CENTER_ALIGNMENT);
+        buttons.setLayout(new BoxLayout(buttons, BoxLayout.Y_AXIS));
+        buttons.setBorder(new EmptyBorder(50, 10, 50, 10));
         this.add(buttons);
     }
 
