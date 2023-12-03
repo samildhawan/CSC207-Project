@@ -2,6 +2,7 @@ package src.data_access;
 
 import com.theokanning.openai.completion.chat.*;
 import com.theokanning.openai.service.OpenAiService;
+import src.entity.Player;
 import src.use_case.create_player.CreatePlayerDataAccessInterface;
 import src.use_case.game.GameDataAccessInterface;
 
@@ -28,6 +29,21 @@ public class APIAccessObject implements GameDataAccessInterface, CreatePlayerDat
 
     public void clearMessages() {
         messages.clear();
+    }
+
+    @Override
+    public void save(Player player) {
+
+    }
+
+    @Override
+    public Player get(String username) {
+        return null;
+    }
+
+    @Override
+    public boolean existsByName(String identifier) {
+        return false;
     }
 
     public void addSystemPrompt(String systemPrompt) {
