@@ -39,7 +39,7 @@ public class TitleView extends JPanel implements ActionListener, PropertyChangeL
 
         titleViewModel.addPropertyChangeListener(this);
 
-        JLabel title = new JLabel("SCRIPT WRITER");
+        JLabel title = new JLabel("SCRIPT WEAVER");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         this.setBorder(new EmptyBorder(50, 10, 10, 10));

@@ -2,6 +2,7 @@ package test.view;
 
 import src.app.Main;
 import src.view.GameView;
+import src.view.TitleView;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,7 +19,7 @@ public class GameViewTest {
     // Check that clicking submit causes
     // Check
 
-    public GameView getGameView() {
+    private GameView getGameView() {
         JFrame app = null;
         Window[] windows = Window.getWindows();
         for (Window window : windows) {
@@ -40,7 +41,7 @@ public class GameViewTest {
         return (GameView) jp2.getComponent(0);
     }
 
-    public JButton getButton() {
+    private JButton getButton() {
         JFrame app = null;
         Window[] windows = Window.getWindows();
         for (Window window : windows) {
@@ -66,7 +67,7 @@ public class GameViewTest {
         return (JButton) buttons.getComponent(0); // this should be the submit button
     }
 
-    public JScrollPane getHistoryTextArea() {
+    private JScrollPane getHistoryTextArea() {
         JFrame app = null;
         Window[] windows = Window.getWindows();
         for (Window window : windows) {
@@ -90,7 +91,7 @@ public class GameViewTest {
         return (JScrollPane) sv.getComponent(0);
     }
 
-    public JTextArea getPromptTextArea() {
+    private JTextArea getPromptTextArea() {
         JFrame app = null;
         Window[] windows = Window.getWindows();
         for (Window window : windows) {
@@ -114,6 +115,30 @@ public class GameViewTest {
         return (JTextArea) sv.getComponent(1);
     }
 
+    private void switchToGameView() {
+        JFrame app = null;
+        Window[] windows = Window.getWindows();
+        for (Window window : windows) {
+            if (window instanceof JFrame) {
+                app = (JFrame) window;
+            }
+        }
+
+        Component root = app.getComponent(0);
+
+        Component cp = ((JRootPane) root).getContentPane();
+
+        JPanel jp = (JPanel) cp;
+
+        JPanel jp2 = (JPanel) jp.getComponent(0);
+
+        TitleView titleView = (TitleView) jp2.getComponent(2);
+
+        JPanel buttons = (JPanel) titleView.getComponent(1);
+
+        ((JButton) buttons.getComponent(0)).doClick();
+    }
+
     @org.junit.Test
     public void testSubmitButtonPresent() {
         Main.main(null);
@@ -133,6 +158,8 @@ public class GameViewTest {
         assert(historyTextArea.getText().isEmpty());
         assert(promptTextArea.isEditable());
         assert(!promptTextArea.getText().isEmpty());
+
+        switchToGameView();
 
         // Hi is 72, 72
         try {
