@@ -21,7 +21,7 @@ public class CreatePlayerView extends JPanel implements ActionListener, Property
     private final CreatePlayerViewModel createPlayerViewModel;
     private final CreatePlayerController createPlayerController;
 
-    private final JTextArea promptInputField = new JTextArea("Here is your character: ", 2, 50);
+    private final JTextArea promptInputField = new JTextArea("Enter your characters name: ", 2, 50);
     private final JTextArea historyField = new JTextArea(10, 50);
 
     private final JButton submit;

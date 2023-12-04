@@ -19,6 +19,8 @@ public class CreatePlayerPresenter implements CreatePlayerOutputBoundary {
         CreatePlayerState currentState = createPlayerViewModel.getState();
         currentState.setHistory(currentState.getHistory() + "\n" + data.getMessage());
         createPlayerViewModel.firePropertyChanged();
+        viewManagerModel.setActiveView("title");
+        viewManagerModel.firePropertyChanged();
     }
 
     @Override

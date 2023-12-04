@@ -7,9 +7,8 @@ import java.util.List;
 
 public interface CreatePlayerDataAccessInterface {
     void save(Player player);
-
+    void save(String name, String backstory);
     Player get(String username);
-
     void addSystemPrompt(String prompt);
     void addUserPrompt(String prompt);
     List<ChatCompletionChoice> runChatGPT();

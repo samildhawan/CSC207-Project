@@ -96,6 +96,15 @@ public class APIAccessObject implements GameDataAccessInterface, CreatePlayerDat
     }
 
     @Override
+    public void save(String name, String backstory) {
+        playerBuilder.newPlayer();
+        playerBuilder.addName(name);
+        playerBuilder.addBackstory(backstory);
+        playerBuilder.initializeStats();
+        players.put(name, playerBuilder.getPlayer());
+    }
+
+    @Override
     public Player get(String username) {
         return players.get(username);
     }
@@ -173,7 +182,7 @@ public class APIAccessObject implements GameDataAccessInterface, CreatePlayerDat
         // A ChatCompletionChoice includes the message, the finishReason and the index
 
         ChatCompletionResult result = service.createChatCompletion(chatCompletionRequest);
-        System.out.println("USAGE " + result.getUsage().getTotalTokens());
+        // System.out.println("USAGE " + result.getUsage().getTotalTokens());
 
         return result.getChoices();
     }
