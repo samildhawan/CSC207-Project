@@ -41,7 +41,7 @@ public class CreatePlayerInteractor implements CreatePlayerInputBoundary {
                     Also mention the character's political affiliation, and let the player know its current stats: [HP: 13, AC: 16, Strength: 15, Dexterity: 13, Constitution: 16].
                     User messages written in square brackets are commands. You must include ANSI codes for colouring of the text.""";
             createPlayerDataAccessObject.addSystemPrompt(systemPrompt);
-            createPlayerDataAccessObject.addUserPrompt(systemPrompt);
+            createPlayerDataAccessObject.addUserPrompt(createPlayerInputData.getPrompt());
             List<ChatCompletionChoice> choices = createPlayerDataAccessObject.runChatGPT();
             CreatePlayerOutputData createPlayerOutputData = new CreatePlayerOutputData(choices);
             createPlayerDataAccessObject.clearMessages();

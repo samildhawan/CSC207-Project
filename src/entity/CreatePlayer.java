@@ -45,22 +45,22 @@ public class CreatePlayer implements Player {
 
     @Override
     public int getStat(String stat) {
-        return 0;
+        return stats.get(stat);
     }
 
     @Override
     public int getXP() {
-        return 0;
+        return xp;
     }
 
     @Override
     public String getClassType() {
-        return null;
+        return classType;
     }
 
     @Override
     public String getBackstory() {
-        return null;
+        return backstory;
     }
 
     // Other overridden methods from Player interface...
@@ -72,7 +72,7 @@ public class CreatePlayer implements Player {
      */
     @Override
     public void addXP(int experience) {
-        // Add experience logic
+        this.xp += experience;
     }
 
     /**
