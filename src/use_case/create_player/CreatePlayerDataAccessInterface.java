@@ -16,6 +16,7 @@ public interface CreatePlayerDataAccessInterface {
      * @param player The player to be saved.
      */
     void save(Player player);
+    void save(String name, String backstory);
 
     /**
      * Retrieves the player information by username.

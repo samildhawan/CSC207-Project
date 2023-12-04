@@ -28,6 +28,7 @@ public interface Player {
      * @return The experience points of the player.
      */
     int getXP();
+    int getLevel();
 
     /**
      * Gets the class/type of the player.
@@ -56,4 +57,11 @@ public interface Player {
      * @return A map containing the statistics of the player.
      */
     Map<String, Integer> getStats();
+
+    void setStats(Map<String, Integer> stats);
+
+    void setBackstory(String backstory);
+    void setName(String name);
+    void setClassType(String classType);
+
 }

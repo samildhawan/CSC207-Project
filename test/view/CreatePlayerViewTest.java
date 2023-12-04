@@ -1,8 +1,9 @@
 package test.view;
 
 import src.app.Main;
-import src.entity.CreatePlayer;
+import src.entity.CommonPlayerBuilder;
 import src.entity.Player;
+import src.entity.PlayerBuilder;
 import src.view.CreatePlayerView;
 
 import javax.swing.*;
@@ -111,7 +112,13 @@ public class CreatePlayerViewTest {
     @org.junit.Test
     public void testCreatePlayer() {
         // Create a player with sample data
-        Player player = new CreatePlayer("John Doe", "Warrior", "A brave warrior with a mysterious past.");
+        PlayerBuilder playerBuilder = new CommonPlayerBuilder();
+        playerBuilder.newPlayer();
+        playerBuilder.addName("John Doe");
+        playerBuilder.addBackstory("A brave warrior with a mysterious past.");
+        playerBuilder.initializeStats();
+
+        Player player = playerBuilder.getPlayer();
 
         // Check if the player's attributes are set correctly
         assertEquals("John Doe", player.getName());
