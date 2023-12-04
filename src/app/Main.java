@@ -18,6 +18,7 @@ import src.data_access.FileDataAccessObject;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 public class Main {
 
@@ -52,16 +53,11 @@ public class Main {
 
         application.pack();
         application.setVisible(true);
-        
-        // CreatePlayer - Updated
-        // TODO: Need to find a home for this
-        CreatePlayerViewModel createPlayerViewModel = new CreatePlayerViewModel();
-        CreatePlayerView createPlayerView = CreatePlayerUseCaseFactory.create(viewManagerModel, createPlayerViewModel, apiAccessObject);
-        views.add(createPlayerView, createPlayerView.viewName);
-        viewManagerModel.setActiveView(createPlayerView.viewName);
-        application.pack();
-        application.setVisible(true);
 
-        new FileDataAccessObject("./users.csv", (name, stats, xp, aClass, backstory) -> null);
+        try {
+            new FileDataAccessObject("./users.csv", (name, stats, xp, aClass, backstory) -> null);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
