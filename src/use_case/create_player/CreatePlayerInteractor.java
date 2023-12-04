@@ -3,19 +3,31 @@ package src.use_case.create_player;
 import com.theokanning.openai.completion.chat.ChatCompletionChoice;
 
 import java.util.List;
-
+/**
+ * Interactor responsible for creating a player based on user input data.
+ */
 public class CreatePlayerInteractor implements CreatePlayerInputBoundary {
 
-    final CreatePlayerDataAccessInterface createPlayerDataAccessObject;
+    private final CreatePlayerDataAccessInterface createPlayerDataAccessObject;
+    private final CreatePlayerOutputBoundary createPlayerPresenter;
 
-    final CreatePlayerOutputBoundary createPlayerPresenter;
-
+    /**
+     * Constructs a CreatePlayerInteractor.
+     *
+     * @param createPlayerDataAccessInterface The data access interface for creating a player.
+     * @param createPlayerOutputBoundary     The output boundary for presenting created player data.
+     */
     public CreatePlayerInteractor(CreatePlayerDataAccessInterface createPlayerDataAccessInterface,
                                   CreatePlayerOutputBoundary createPlayerOutputBoundary) {
-
         this.createPlayerDataAccessObject = createPlayerDataAccessInterface;
         this.createPlayerPresenter = createPlayerOutputBoundary;
     }
+
+    /**
+     * Executes the creation of a player based on the input data.
+     *
+     * @param createPlayerInputData The input data required to create a player.
+     */
 
     @Override
     public void execute(CreatePlayerInputData createPlayerInputData) {

@@ -1,8 +1,12 @@
 package src.entity;
+
 import java.util.HashMap;
 import java.util.Map;
 
-public class CreatePlayer implements Player{
+/**
+ * Represents a CreatePlayer implementing the Player interface with specific attributes.
+ */
+public class CreatePlayer implements Player {
     private String name;
     private int level;
     private int xp;
@@ -10,7 +14,13 @@ public class CreatePlayer implements Player{
     private String backstory;
     private Map<String, Integer> stats;
 
-    // Constructor to initialize player attributes
+    /**
+     * Constructor to initialize player attributes.
+     *
+     * @param name       The name of the player.
+     * @param classType  The type/class of the player.
+     * @param backstory  The backstory of the player.
+     */
     public CreatePlayer(String name, String classType, String backstory) {
         this.name = name;
         this.classType = classType;
@@ -22,6 +32,12 @@ public class CreatePlayer implements Player{
     }
 
     // Implement methods from Player interface
+
+    /**
+     * Retrieves the name of the player.
+     *
+     * @return The name of the player.
+     */
     @Override
     public String getName() {
         return name;
@@ -47,20 +63,36 @@ public class CreatePlayer implements Player{
         return backstory;
     }
 
+    // Other overridden methods from Player interface...
+
+    /**
+     * Adds experience points to the player.
+     *
+     * @param experience The amount of experience points to add.
+     */
     @Override
     public void addXP(int experience) {
         this.xp += experience;
     }
 
+    /**
+     * Retrieves the player's statistics.
+     *
+     * @return The player's statistics as a Map of String keys and Integer values.
+     */
     @Override
     public Map<String, Integer> getStats() {
         return stats;
     }
 
-    // Other overridden methods (getStat, getXP, getClassType, getBackstory, addXP, getStats)
-    // ...
+    // Other overridden methods from Player interface...
 
     // Additional methods or helper methods as needed
+
+    /**
+     * Initializes player statistics.
+     * Example: Initializes HP and Strength.
+     */
     private void initializeStats() {
         // Initialize player stats as needed
         // For example:
