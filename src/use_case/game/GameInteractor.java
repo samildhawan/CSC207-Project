@@ -18,7 +18,6 @@ public class GameInteractor implements GameInputBoundary {
 
     @Override
     public void execute(GameInputData gameInputData) {
-        System.out.println("WORKING ON THE PROMPT");
         try {
             WorldStory worldStory = gameDataAccessObject.getWorldStory();
 
