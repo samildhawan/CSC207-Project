@@ -2,6 +2,9 @@ package src.entity;
 
 import java.util.Map;
 
+/**
+ * Represents a CommonPlayer implementing the Player interface with specific attributes.
+ */
 public class CommonPlayer implements Player {
 
     private String name;
@@ -41,11 +44,23 @@ public class CommonPlayer implements Player {
         return backstory;
     }
 
+    // Other overridden methods from Player interface...
+
+    /**
+     * Adds experience points to the player.
+     *
+     * @param experience The amount of experience points to add.
+     */
     @Override
     public void addXP(int experience) {
         this.xp += experience;
     }
 
+    /**
+     * Retrieves the player's statistics.
+     *
+     * @return The player's statistics as a Map of String keys and Integer values.
+     */
     @Override
     public Map<String, Integer> getStats() {
         return stats;
@@ -75,6 +90,11 @@ public class CommonPlayer implements Player {
     // ...
 
     // Additional methods or helper methods as needed
+
+    /**
+     * Initializes player statistics.
+     * Example: Initializes HP and Strength.
+     */
     private void initializeStats() {
         // Initialize player stats as needed
         // For example:
