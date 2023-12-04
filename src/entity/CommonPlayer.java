@@ -1,27 +1,16 @@
 package src.entity;
-import java.util.HashMap;
+
 import java.util.Map;
 
-public class CreatePlayer implements Player{
+public class CommonPlayer implements Player {
+
     private String name;
-    private int level;
-    private int xp;
+    private int level = 1;
+    private int xp = 0;
     private String classType;
     private String backstory;
     private Map<String, Integer> stats;
 
-    // Constructor to initialize player attributes
-    public CreatePlayer(String name, String classType, String backstory) {
-        this.name = name;
-        this.classType = classType;
-        this.backstory = backstory;
-        this.level = 1; // Assuming initial level is 1
-        this.xp = 0;    // Assuming initial XP is 0
-        this.stats = new HashMap<>();
-        initializeStats(); // Initialize stats
-    }
-
-    // Implement methods from Player interface
     @Override
     public String getName() {
         return name;
@@ -35,6 +24,11 @@ public class CreatePlayer implements Player{
     @Override
     public int getXP() {
         return xp;
+    }
+
+    @Override
+    public int getLevel() {
+        return level;
     }
 
     @Override
@@ -55,6 +49,26 @@ public class CreatePlayer implements Player{
     @Override
     public Map<String, Integer> getStats() {
         return stats;
+    }
+
+    @Override
+    public void setStats(Map<String, Integer> stats) {
+        this.stats = stats;
+    }
+
+    @Override
+    public void setBackstory(String backstory) {
+        this.backstory = backstory;
+    }
+
+    @Override
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public void setClassType(String classType) {
+        this.classType = classType;
     }
 
     // Other overridden methods (getStat, getXP, getClassType, getBackstory, addXP, getStats)

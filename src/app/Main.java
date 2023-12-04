@@ -2,10 +2,7 @@ package src.app;
 
 import com.formdev.flatlaf.FlatLightLaf;
 import src.data_access.APIAccessObject;
-import src.entity.CreatePlayer;
-import src.entity.CreatePlayerFactory;
-import src.entity.Player;
-import src.entity.PlayerFactory;
+import src.entity.CommonPlayerBuilder;
 import src.interface_adapter.ViewManagerModel;
 import src.interface_adapter.create_player.CreatePlayerViewModel;
 import src.interface_adapter.game.GameViewModel;
@@ -14,11 +11,9 @@ import src.view.GameView;
 import src.view.CreatePlayerView;
 import src.view.TitleView;
 import src.view.ViewManager;
-import src.data_access.FileDataAccessObject;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
 
 public class Main {
 
@@ -38,7 +33,7 @@ public class Main {
 
         GameViewModel gameViewModel = new GameViewModel();
         CreatePlayerViewModel createPlayerViewModel = new CreatePlayerViewModel();
-        APIAccessObject apiAccessObject = new APIAccessObject();
+        APIAccessObject apiAccessObject = new APIAccessObject("./users.csv", new CommonPlayerBuilder());
         TitleViewModel titleViewModel = new TitleViewModel();
 
         GameView gameView = GameUseCaseFactory.create(viewManagerModel, gameViewModel, apiAccessObject);
@@ -53,11 +48,5 @@ public class Main {
 
         application.pack();
         application.setVisible(true);
-
-        try {
-            new FileDataAccessObject("./users.csv", (name, stats, xp, aClass, backstory) -> null);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
     }
 }

@@ -17,8 +17,6 @@ import java.beans.PropertyChangeListener;
 
 public class GameView extends JPanel implements ActionListener, PropertyChangeListener {
     public final String viewName = "game";
-    private final GameViewModel gameViewModel;
-    private final GameController gameController;
 
     private final JTextArea promptInputField = new JTextArea("Enter your prompt", 2, 50);
     private final JTextArea historyField = new JTextArea(10, 50);
@@ -26,8 +24,6 @@ public class GameView extends JPanel implements ActionListener, PropertyChangeLi
     private final JButton submit;
 
     public GameView(GameController gameController, GameViewModel gameViewModel) {
-        this.gameController = gameController;
-        this.gameViewModel = gameViewModel;
         gameViewModel.addPropertyChangeListener(this);
 
         this.setBorder(new EmptyBorder(10, 10, 10, 10));
